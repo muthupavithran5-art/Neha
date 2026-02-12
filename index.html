@@ -71,7 +71,7 @@ body{
   transition:0.3s ease;
 }
 
-/* Button breathing glow */
+/* Button glow */
 .button-glow{
   animation:glowPulse 2.5s infinite ease-in-out;
 }
@@ -142,7 +142,7 @@ h2{
   transform:scale(1.05) rotate(0deg);
 }
 
-/* ---------- VALENTINE ---------- */
+/* ---------- BUTTONS ---------- */
 
 button{
   padding:10px 22px;
@@ -196,7 +196,7 @@ button:hover{
   font-size:1rem;
 }
 
-/* ---------- FEELINGS ---------- */
+/* ---------- TEXTAREA ---------- */
 
 textarea{
   width:100%;
@@ -208,12 +208,34 @@ textarea{
   margin-top:10px;
 }
 
-/* ---------- ENDING ---------- */
+/* ---------- FADE ENDING ---------- */
 
-.ending{
-  background:transparent;
-  box-shadow:none;
-  color:#a84372;
+.fade-overlay{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(to bottom,#ffe6f0,#ffd6eb,#ffc2e0);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 2s ease;
+  z-index:1000;
+}
+
+.final-text{
+  font-size:2rem;
+  text-align:center;
+  opacity:0;
+  transition:opacity 2s ease;
+}
+
+.fade-overlay.show{
+  opacity:1;
+}
+
+.fade-overlay.show .final-text{
+  opacity:1;
 }
 
 </style>
@@ -226,7 +248,7 @@ textarea{
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<!-- INTRO FULL SCREEN -->
+<!-- INTRO -->
 <section id="introScreen" class="intro-screen">
   <div class="intro-content">
     <h1 id="typedName"></h1>
@@ -238,7 +260,7 @@ textarea{
   </div>
 </section>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div id="mainContent" class="container">
 
   <section>
@@ -278,20 +300,23 @@ textarea{
     </p>
   </section>
 
-  <section>
+  <section id="feelSection">
     <h2>Tell me what you felt</h2>
-    <textarea placeholder="Write here..."></textarea>
-  </section>
-
-  <section class="ending">
-    <p>Until our next chapter…</p>
+    <textarea id="herMessage" placeholder="Write here..."></textarea>
+    <br>
+    <button onclick="sendMessage()">Send 💗</button>
   </section>
 
 </div>
 
+<!-- FINAL FADE -->
+<div id="fadeOverlay" class="fade-overlay">
+  <div class="final-text">Until our next chapter…</div>
+</div>
+
 <script>
 
-/* Typing Effect */
+/* Typing */
 document.addEventListener("DOMContentLoaded", function(){
 
   const nameEl = document.getElementById("typedName");
@@ -315,10 +340,9 @@ document.addEventListener("DOMContentLoaded", function(){
   typeName();
 });
 
-/* Begin Transition */
+/* Begin */
 function enterSite(){
   document.getElementById("bgMusic").play();
-
   const intro = document.getElementById("introScreen");
   const main = document.getElementById("mainContent");
 
@@ -330,7 +354,7 @@ function enterSite(){
   },800);
 }
 
-/* Yes Button */
+/* Yes */
 function yesClicked(){
 
   document.getElementById("response").innerText =
@@ -342,20 +366,35 @@ function yesClicked(){
 
   document.body.appendChild(heart);
 
-  setTimeout(()=>{
-    heart.remove();
-  },1500);
+  setTimeout(()=>{ heart.remove(); },1500);
 }
 
-/* Shy Button */
+/* Shy */
 function shyClick(btn){
   btn.classList.add("shy-move");
-
-  setTimeout(()=>{
-    btn.classList.remove("shy-move");
-  },400);
-
+  setTimeout(()=>{ btn.classList.remove("shy-move"); },400);
   yesClicked();
+}
+
+/* Send & Fade */
+function sendMessage(){
+
+  const message = document.getElementById("herMessage").value;
+  if(message.trim()==="") return;
+
+  const overlay = document.getElementById("fadeOverlay");
+  const music = document.getElementById("bgMusic");
+
+  let fadeAudio = setInterval(function(){
+    if(music.volume > 0.05){
+      music.volume -= 0.05;
+    } else {
+      music.volume = 0;
+      clearInterval(fadeAudio);
+    }
+  },150);
+
+  overlay.classList.add("show");
 }
 
 </script>
