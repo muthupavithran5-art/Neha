@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Neha</title>
+<title>For Neha 💗</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -16,70 +16,52 @@
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<div class="particles"></div>
+<div class="aurora"></div>
+<div class="sparkles"></div>
+<div class="cupid"></div>
 
-<!-- SCENE 1 -->
-<section class="scene snap opening">
-  <div class="center">
-    <h1 class="title">Neha</h1>
-    <p class="subtitle">A story I built for you</p>
-    <button id="beginBtn">Tap to Begin</button>
+<section class="opening">
+  <h1>Neha</h1>
+  <p>A story I built for you</p>
+  <button id="beginBtn">Begin</button>
+</section>
+
+<section class="intro hidden">
+  <p id="introText"></p>
+</section>
+
+<section class="memory-wall hidden">
+  <div class="photo p1"><img src="photo1.jpeg"></div>
+  <div class="photo p2"><img src="photo2.jpeg"></div>
+  <div class="photo p3"><img src="photo3.jpeg"></div>
+  <div class="photo p4"><img src="photo4.jpeg"></div>
+  <div class="photo p5">
+    <img src="photo5.jpeg">
+    <div class="teddy">🧸</div>
   </div>
 </section>
 
-<!-- SCENE 2 -->
-<section class="scene snap intro">
-  <div class="center">
-    <p id="introText"></p>
+<section class="valentine hidden">
+  <div id="valentineText"></div>
+  <button class="yes hidden" id="yesBtn">YES</button>
+</section>
+
+<section class="letter hidden">
+  <div class="letter-box">
+    <p id="typeLetter"></p>
   </div>
 </section>
 
-<!-- SCENE 3 -->
-<section class="scene snap reelScene">
-  <div class="reel-mask">
-    <div class="film-strip" id="filmStrip">
-      <div class="frame"><img src="photo1.jpeg"></div>
-      <div class="frame"><img src="photo2.jpeg"></div>
-      <div class="frame"><img src="photo3.jpeg"></div>
-      <div class="frame"><img src="photo4.jpeg"></div>
-      <div class="frame"><img src="photo5.jpeg"></div>
-    </div>
-  </div>
-</section>
-
-<!-- SCENE 4 -->
-<section class="scene snap valentine">
-  <div class="center">
-    <h2>Will you be my Valentine?</h2>
-    <div class="btn-group">
-      <button class="yes" onclick="yesValentine()">YES</button>
-      <button class="no" onmouseover="moveNo(this)" ontouchstart="moveNo(this)">NO</button>
-    </div>
-    <p id="valentineResult"></p>
-  </div>
-</section>
-
-<!-- SCENE 5 -->
-<section class="scene letter">
-  <div class="spotlight">
-    <div class="letter-box">
-      <p id="typeLetter"></p>
-    </div>
-  </div>
-</section>
-
-<!-- SCENE 6 -->
-<section class="scene feelings">
-  <div class="center">
+<section class="feelings hidden">
+  <div class="card">
     <h2>Tell me what your heart felt…</h2>
     <textarea id="herMessage"></textarea>
-    <button onclick="sendMessage()">Send ❤️</button>
+    <button onclick="sendMessage()">Send 💗</button>
     <p id="messageStatus"></p>
   </div>
 </section>
 
-<!-- SCENE 7 -->
-<section class="scene ending" id="endingScene">
+<section class="ending">
   <h1>Until our next chapter…</h1>
 </section>
 
