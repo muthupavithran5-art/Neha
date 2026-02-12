@@ -1,211 +1,146 @@
-/* ===============================
-   GLOBAL RESET
-================================ */
-* {
-  box-sizing: border-box;
+body{
+  margin:0;
+  font-family:'Noto Serif Tamil',serif;
+  background:linear-gradient(-45deg,#ffe6f0,#fff0f6,#ffeaf4,#ffffff);
+  background-size:400% 400%;
+  animation:gradientMove 18s ease infinite;
+  color:#3a001f;
+  overflow-x:hidden;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Noto Serif Tamil', serif;
-  background: linear-gradient(180deg, #ffe3ec 0%, #ffffff 100%);
-  color: #4a0033;
-  text-align: center;
-  overflow-x: hidden;
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-/* ===============================
-   SECTION CARD STYLE
-================================ */
-section {
-  padding: 55px 22px;
-  margin: 28px 16px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.9s ease;
+section{
+  width:92%;
+  max-width:600px;
+  margin:70px auto;
+  padding:45px 28px;
+  border-radius:32px;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(15px);
+  position:relative;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s ease;
 }
 
-section.show {
-  opacity: 1;
-  transform: translateY(0);
+section.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* ===============================
-   HEADINGS
-================================ */
-h1, h2 {
-  color: #c2185b;
-  margin-bottom: 18px;
-  font-weight: 600;
+section::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:34px;
+  background:linear-gradient(45deg,#ff4081,#ff80ab,#e91e63);
+  background-size:300% 300%;
+  animation:borderGlow 6s linear infinite;
+  z-index:-1;
 }
 
-.intro h1 {
-  font-size: 2.4rem;
-  letter-spacing: 0.5px;
+@keyframes borderGlow{
+  0%{background-position:0% 50%;}
+  100%{background-position:300% 50%;}
 }
 
-/* ===============================
-   INTRO PARAGRAPH
-================================ */
-.intro p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  letter-spacing: 0.4px;
+.gallery{
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
 }
 
-/* ===============================
-   MEMORIES GALLERY (AESTHETIC)
-================================ */
-.gallery {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  padding: 25px 10px;
-  scroll-snap-type: x mandatory;
+.gallery img{
+  width:85%;
+  max-width:280px;
+  border-radius:28px;
+  cursor:pointer;
+  scroll-snap-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,0.2);
+  transition:transform .5s ease;
 }
 
-.gallery::-webkit-scrollbar {
-  display: none;
+.gallery img:active{
+  transform:scale(1.08);
 }
 
-.gallery img {
-  scroll-snap-align: center;
-  width: 78%;
-  max-width: 260px;
-  border-radius: 24px;
-  background: #ffffff;
-  padding: 10px;
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.12),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
 }
 
-.gallery img:active {
-  transform: scale(1.06);
-  box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.18),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+.modal img{
+  width:90%;
+  max-width:500px;
+  border-radius:20px;
 }
 
-/* ===============================
-   QUIZ
-================================ */
-.question p {
-  font-size: 1rem;
-  margin-bottom: 12px;
-  line-height: 1.6;
+textarea{
+  width:100%;
+  height:140px;
+  border-radius:20px;
+  border:none;
+  padding:15px;
+  font-size:16px;
+  resize:none;
+  background:#fff5f8;
+  margin-bottom:15px;
 }
 
-button {
-  padding: 14px 28px;
-  border: none;
-  border-radius: 30px;
-  font-size: 16px;
-  margin: 10px;
-  cursor: pointer;
-  transition: transform 0.25s ease;
+button{
+  padding:12px 22px;
+  border-radius:25px;
+  border:none;
+  cursor:pointer;
 }
 
-button:active {
-  transform: scale(0.95);
+.yes{
+  background:linear-gradient(45deg,#ff4f81,#e91e63);
+  color:white;
 }
 
-.yes {
-  background: linear-gradient(45deg, #ff4081, #e91e63);
-  color: white;
-  box-shadow: 0 8px 22px rgba(233,30,99,0.4);
+.no{
+  background:#f8e8ee;
+  position:absolute;
 }
 
-.no {
-  background: #f3f3f3;
-  position: absolute;
+.btn-group{
+  position:relative;
+  height:150px;
 }
 
-/* ===============================
-   VALENTINE BUTTON AREA
-================================ */
-.btn-group {
-  position: relative;
-  height: 130px;
+.music-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  font-size:26px;
+  cursor:pointer;
 }
 
-#valentineResult {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  color: #b0004f;
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:22px;
+  animation:floatUp 6s linear infinite;
 }
 
-/* ===============================
-   PROMISE SECTION
-================================ */
-.promise p {
-  font-size: 1.05rem;
-  line-height: 1.9;
-  letter-spacing: 0.4px;
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-110vh);opacity:0;}
 }
 
-/* ===============================
-   TAMIL LETTER (IMPORTANT)
-================================ */
-.letter p {
-  font-family: 'Noto Serif Tamil', serif;
-  font-size: 1.15rem;
-  line-height: 2.2;
-  letter-spacing: 0.5px;
-  text-align: left;
-  padding: 0 10px;
-  white-space: normal;
-}
-
-.letter span {
-  display: block;
-  margin-top: 25px;
-  font-weight: 600;
-}
-
-/* ===============================
-   SURPRISE SECTION
-================================ */
-.surprise {
-  display: none;
-  background: linear-gradient(135deg, #ffeaf2, #ffffff);
-}
-
-/* ===============================
-   MUSIC BUTTON
-================================ */
-.music-btn {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-/* ===============================
-   FLOATING HEARTS
-================================ */
-.heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 22px;
-  animation: floatUp 6s linear infinite;
-  opacity: 0.75;
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
+.letter p{
+  line-height:2.2;
+  text-align:left;
 }

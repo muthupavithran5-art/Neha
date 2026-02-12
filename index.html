@@ -1,111 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Neha ❤️</title>
 
-  <title>For You ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-  <!-- Handwritten font -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- Background Music -->
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="music-btn" onclick="toggleMusic()">🎶</div>
+<div class="music-btn">🎵</div>
 
-<!-- INTRO -->
 <section class="intro show">
-  <h1>Hi love ❤️</h1>
+  <h1>Hi, Neha! ❤️</h1>
   <p id="typeIntro"></p>
 </section>
 
-<!-- MEMORIES -->
 <section class="memories">
   <h2>Our Memories 📸</h2>
   <div class="gallery">
-    <img src="photo1.jpeg" alt="memory">
-    <img src="photo2.jpeg" alt="memory">
-    <img src="photo3.jpeg" alt="memory">
-    <img src="photo4.jpeg" alt="memory">
-    <img src="photo5.jpeg" alt="memory">
+    <img src="photo1.jpeg">
+    <img src="photo2.jpeg">
+    <img src="photo3.jpeg">
+    <img src="photo4.jpeg">
+    <img src="photo5.jpeg">
   </div>
 </section>
 
-<!-- QUIZ -->
-<section class="quiz">
-  <h2>How well do you remember us? 💌</h2>
-
-  <div class="question">
-    <p>Who loves a little deeper every day?</p>
-    <button onclick="answer(this)">Me 😌</button>
-    <button onclick="answer(this)">You ❤️</button>
-  </div>
-
-  <div class="question">
-    <p>What happens when I see your message?</p>
-    <button onclick="answer(this)">I smile 😊</button>
-    <button onclick="answer(this)">My heart races 💓</button>
-  </div>
-
-  <div class="question">
-    <p>What are we slowly building?</p>
-    <button onclick="answer(this)">Memories 📸</button>
-    <button onclick="answer(this)">A future 🌙</button>
-  </div>
+<section class="feelings">
+  <h2>Tell me what your heart feels… 💖</h2>
+  <textarea id="herMessage"
+    placeholder="Write anything… what you feel about us, about today, about me…"></textarea>
+  <button onclick="sendMessage()">Send to Muthu ❤️</button>
+  <p id="messageStatus"></p>
 </section>
 
-<!-- VALENTINE -->
 <section class="valentine">
   <h2>Will you be my Valentine? 💝</h2>
-
   <div class="btn-group">
     <button class="yes" onclick="yesValentine()">YES ❤️</button>
-    <button class="no"
-      onmouseover="moveNo(this)"
-      ontouchstart="moveNo(this)">
-      NO 🙈
-    </button>
+    <button class="no" onmouseover="moveNo(this)" ontouchstart="moveNo(this)">NO 🙈</button>
   </div>
-
   <p id="valentineResult"></p>
 </section>
 
-<!-- PROMISE -->
-<section class="promise">
-  <h2>A Promise 💖</h2>
-  <p>
-    I’m not asking for forever today…<br><br>
-    I’m asking for patience,<br>
-    understanding,<br>
-    and all the little tomorrows we grow into.<br><br>
-    When the time feels right,<br>
-    I hope it’s still you and me. 💍
-  </p>
-</section>
-
-<!-- SURPRISE (HIDDEN) -->
-<section class="surprise" id="surprise">
-  <h2>One last thing… 💌</h2>
-  <p>
-    If love had a face,<br>
-    it would look like you.<br><br>
-    Thank you for choosing me,<br>
-    again and again. ❤️
-  </p>
-</section>
-
-<!-- LETTER -->
 <section class="letter">
   <p id="typeLetter"></p>
-  <span>— Always yours, Muthu</span>
 </section>
 
 <script src="script.js"></script>
