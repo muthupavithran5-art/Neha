@@ -7,6 +7,13 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
+
 </head>
 
 <body>
@@ -21,16 +28,18 @@
   <section class="hero">
     <h1>For Neha 💗</h1>
     <p>Happy Valentine's Day</p>
-    <button onclick="startMusic()">Start</button>
+    <button onclick="startExperience()">Begin</button>
   </section>
 
   <!-- PHOTOS -->
-  <section class="photos">
+  <section class="photos" id="photosSection">
     <h2>Our Moments</h2>
     <div class="photo-grid">
       <img src="photo1.jpeg">
       <img src="photo2.jpeg">
       <img src="photo3.jpeg">
+      <img src="photo4.jpeg">
+      <img src="photo5.jpeg">
     </div>
   </section>
 
@@ -77,8 +86,9 @@
 </div>
 
 <script>
-function startMusic(){
+function startExperience(){
   document.getElementById("bgMusic").play();
+  document.getElementById("photosSection").scrollIntoView();
 }
 
 function yesClicked(){
