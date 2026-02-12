@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Neha 💗</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,69 +15,77 @@
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<div class="aurora"></div>
-<div class="sparkles"></div>
-
-<div class="page">
+<div class="container">
 
   <!-- HERO -->
   <section class="hero">
-    <div class="card">
-      <h3 class="sub">For Neha</h3>
-      <h1 class="title">An Evening Written in Light</h1>
-      <button id="beginBtn" class="primary-btn">Begin</button>
-    </div>
+    <h1>For Neha 💗</h1>
+    <p>Happy Valentine's Day</p>
+    <button onclick="startMusic()">Start</button>
   </section>
 
-  <!-- INTRO -->
-  <section class="intro hidden">
-    <div class="card soft">
-      <p id="introText"></p>
-    </div>
-  </section>
-
-  <!-- MEMORY -->
-  <section class="memory hidden">
-    <h2 class="section-title">Our Moments</h2>
-    <div class="memory-cluster">
-      <div class="photo stack"><img src="photo1.jpeg"></div>
-      <div class="photo stack"><img src="photo2.jpeg"></div>
-      <div class="photo stack"><img src="photo3.jpeg"></div>
+  <!-- PHOTOS -->
+  <section class="photos">
+    <h2>Our Moments</h2>
+    <div class="photo-grid">
+      <img src="photo1.jpeg">
+      <img src="photo2.jpeg">
+      <img src="photo3.jpeg">
     </div>
   </section>
 
   <!-- VALENTINE -->
-  <section class="valentine hidden">
-    <div class="card soft">
-      <div id="valText"></div>
-      <button id="yesBtn" class="primary-btn hidden">Yes</button>
+  <section class="valentine">
+    <h2>Will you be my Valentine?</h2>
+    <div class="buttons">
+      <button onclick="yesClicked()">Yes 💗</button>
+      <button onclick="yesClicked()">Of Course 🌸</button>
     </div>
+    <p id="response"></p>
   </section>
 
   <!-- TAMIL LETTER -->
-  <section class="letter hidden">
-    <div class="card letter-card">
-      <p id="typeLetter"></p>
-    </div>
+  <section class="letter">
+    <h2>For You</h2>
+    <p class="tamil">
+துன்புற்று நானும் துவண்டு போய் நிற்க, உன் பூவிழி வந்து புயல் போல் மோதும்!
+சிறு நொடி நானும் வெறுப்போடு உணர, உன் குயில் மொழி என்னுள் குடிகொண்டு ஆளும்!
+நீயின்றி நானும் நிலத்தினில் மீனே!
+நொய் கொண்டு வாழும் பாமரன் தானே!
+தூறல்கள் சிந்தும் குறுமுகில் நீயே, கானல் நீர் கண்ட பாலையும் நானே!
+வாரத்தின் ஏழில் ஞாயிரு நீயே, வாசாப்பு வாங்கும் திங்களும் நானே!
+துயர் பல வந்த போதும், துன்பம் பல கண்ட போதும், வற்றாத பொய்கையடி, நம் காதல், தாகம் தீர்க்கும் வைகையடி!
+இந்த தூரம் வைக்குமா வற்ற? நம் காதல் நதியை!
+உன் காதல் ஒன்றே ஆளும், இந்த மடையன் மதியை!
+இனிய காதலர் தின வாழ்த்துக்கள்! என் காதல் நதியே! பூவிழும் கொடியே!
+புன்னகை முகிலே! தேன்சுரக்கனியே! தேவதை உருவே! தீரா காமமே! திகட்டாத மோகமே!
+என் அன்பர்கினியாளுக்கு, என் அன்பான காதலர் தின வாழ்த்துகள்!
+    </p>
   </section>
 
   <!-- FEELINGS -->
-  <section class="feelings hidden">
-    <div class="card response">
-      <h2>Tell me what your heart felt…</h2>
-      <textarea id="herMessage"></textarea>
-      <button onclick="sendMessage()" class="primary-btn">Send</button>
-      <p id="messageStatus"></p>
-    </div>
+  <section class="feelings">
+    <h2>Tell me what you felt</h2>
+    <textarea placeholder="Write here..."></textarea>
   </section>
 
-  <!-- ENDING -->
+  <!-- END -->
   <section class="ending">
-    <h1>Until our next chapter…</h1>
+    <p>Until our next chapter…</p>
   </section>
 
 </div>
 
-<script src="script.js"></script>
+<script>
+function startMusic(){
+  document.getElementById("bgMusic").play();
+}
+
+function yesClicked(){
+  document.getElementById("response").innerText =
+  "You just made my day 💗";
+}
+</script>
+
 </body>
 </html>
