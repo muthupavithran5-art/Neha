@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Neha 💗</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -18,52 +18,66 @@
 
 <div class="aurora"></div>
 <div class="sparkles"></div>
-<div class="cupid"></div>
 
-<section class="opening">
-  <h1>Neha</h1>
-  <p>A story I built for you</p>
-  <button id="beginBtn">Begin</button>
-</section>
+<div class="page">
 
-<section class="intro hidden">
-  <p id="introText"></p>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="card">
+      <h3 class="sub">For Neha</h3>
+      <h1 class="title">An Evening Written in Light</h1>
+      <button id="beginBtn" class="primary-btn">Begin</button>
+    </div>
+  </section>
 
-<section class="memory-wall hidden">
-  <div class="photo p1"><img src="photo1.jpeg"></div>
-  <div class="photo p2"><img src="photo2.jpeg"></div>
-  <div class="photo p3"><img src="photo3.jpeg"></div>
-  <div class="photo p4"><img src="photo4.jpeg"></div>
-  <div class="photo p5">
-    <img src="photo5.jpeg">
-    <div class="teddy">🧸</div>
-  </div>
-</section>
+  <!-- INTRO -->
+  <section class="intro hidden">
+    <div class="card soft">
+      <p id="introText"></p>
+    </div>
+  </section>
 
-<section class="valentine hidden">
-  <div id="valentineText"></div>
-  <button class="yes hidden" id="yesBtn">YES</button>
-</section>
+  <!-- MEMORY -->
+  <section class="memory hidden">
+    <h2 class="section-title">Our Moments</h2>
+    <div class="memory-cluster">
+      <div class="photo main"><img src="photo1.jpeg"></div>
+      <div class="photo left"><img src="photo2.jpeg"></div>
+      <div class="photo right"><img src="photo3.jpeg"></div>
+    </div>
+  </section>
 
-<section class="letter hidden">
-  <div class="letter-box">
-    <p id="typeLetter"></p>
-  </div>
-</section>
+  <!-- VALENTINE -->
+  <section class="valentine hidden">
+    <div class="card soft">
+      <div id="valText"></div>
+      <button id="yesBtn" class="primary-btn hidden">Yes</button>
+    </div>
+  </section>
 
-<section class="feelings hidden">
-  <div class="card">
-    <h2>Tell me what your heart felt…</h2>
-    <textarea id="herMessage"></textarea>
-    <button onclick="sendMessage()">Send 💗</button>
-    <p id="messageStatus"></p>
-  </div>
-</section>
+  <!-- TAMIL LETTER -->
+  <section class="letter hidden">
+    <div class="card letter-card">
+      <p id="typeLetter"></p>
+    </div>
+  </section>
 
-<section class="ending">
-  <h1>Until our next chapter…</h1>
-</section>
+  <!-- FEELINGS -->
+  <section class="feelings hidden">
+    <div class="card response">
+      <h2>Tell me what your heart felt…</h2>
+      <textarea id="herMessage"></textarea>
+      <button onclick="sendMessage()" class="primary-btn">Send</button>
+      <p id="messageStatus"></p>
+    </div>
+  </section>
+
+  <!-- ENDING -->
+  <section class="ending">
+    <h1>Until our next chapter…</h1>
+  </section>
+
+</div>
 
 <script src="script.js"></script>
 </body>
