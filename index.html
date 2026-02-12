@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>For Neha ❤️</title>
+<title>For Neha</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,40 +16,39 @@
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<!-- PARTICLES -->
 <div class="particles"></div>
 
 <!-- SCENE 1 -->
-<section class="scene opening">
+<section class="scene snap opening">
   <div class="center">
-    <h1 class="glow">Neha</h1>
-    <p>A story I built for you</p>
+    <h1 class="title">Neha</h1>
+    <p class="subtitle">A story I built for you</p>
     <button id="beginBtn">Tap to Begin</button>
   </div>
 </section>
 
 <!-- SCENE 2 -->
-<section class="scene intro">
+<section class="scene snap intro">
   <div class="center">
     <p id="introText"></p>
   </div>
 </section>
 
-<!-- SCENE 3 - FILM REEL -->
-<section class="scene reelScene">
-  <div class="reel-wrapper">
-    <div class="reel" id="reel">
-      <div class="frame"><img src="photo1.jpeg"></div>
-      <div class="frame"><img src="photo2.jpeg"></div>
-      <div class="frame"><img src="photo3.jpeg"></div>
-      <div class="frame"><img src="photo4.jpeg"></div>
-      <div class="frame"><img src="photo5.jpeg"></div>
+<!-- SCENE 3 -->
+<section class="scene snap reelScene">
+  <div class="reel-mask">
+    <div class="film-strip" id="filmStrip">
+      <div class="frame"><img src="photo1.jpg"></div>
+      <div class="frame"><img src="photo2.jpg"></div>
+      <div class="frame"><img src="photo3.jpg"></div>
+      <div class="frame"><img src="photo4.jpg"></div>
+      <div class="frame"><img src="photo5.jpg"></div>
     </div>
   </div>
 </section>
 
 <!-- SCENE 4 -->
-<section class="scene valentine">
+<section class="scene snap valentine">
   <div class="center">
     <h2>Will you be my Valentine?</h2>
     <div class="btn-group">
@@ -64,8 +61,10 @@
 
 <!-- SCENE 5 -->
 <section class="scene letter">
-  <div class="letter-box">
-    <p id="typeLetter"></p>
+  <div class="spotlight">
+    <div class="letter-box">
+      <p id="typeLetter"></p>
+    </div>
   </div>
 </section>
 
@@ -76,8 +75,12 @@
     <textarea id="herMessage"></textarea>
     <button onclick="sendMessage()">Send ❤️</button>
     <p id="messageStatus"></p>
-    <h3 class="ending">Until our next chapter…</h3>
   </div>
+</section>
+
+<!-- SCENE 7 -->
+<section class="scene ending" id="endingScene">
+  <h1>Until our next chapter…</h1>
 </section>
 
 <script src="script.js"></script>

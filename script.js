@@ -1,21 +1,18 @@
 (function(){
-  emailjs.init("YOUR_PUBLIC_KEY");
+  emailjs.init("CbUgdHOASOFSvE1O7");
 })();
 
 const music=document.getElementById("bgMusic");
 let started=false;
 
 document.getElementById("beginBtn").addEventListener("click",()=>{
-  if(!started){
-    music.volume=0;
-    music.play();
-    let vol=0;
-    const fade=setInterval(()=>{
-      if(vol<0.4){vol+=0.02;music.volume=vol;}
-      else clearInterval(fade);
-    },200);
-    started=true;
-  }
+  music.volume=0;
+  music.play();
+  let v=0;
+  const fade=setInterval(()=>{
+    if(v<0.4){v+=0.02;music.volume=v;}
+    else clearInterval(fade);
+  },200);
   document.querySelector(".opening").style.display="none";
 });
 
@@ -51,10 +48,7 @@ const letterObserver=new IntersectionObserver(entries=>{
 உன் காதல் ஒன்றே ஆளும், இந்த மடையன் மதியை!
 இனிய காதலர் தின வாழ்த்துக்கள்! என் காதல் நதியே! பூவிழும் கொடியே!
 புன்னகை முகிலே! தேன்சுரக்கனியே! தேவதை உருவே! தீரா காமமே! திகட்டாத மோகமே!
-என் அன்பர்கினியாளுக்கு, என் அன்பான காதலர் தின வாழ்த்துகள்!
-
--அன்புடன்,
-நேஹன் (எ) முத்து.`,30);
+என் அன்பர்கினியாளுக்கு, என் அன்பான காதலர் தின வாழ்த்துகள்!`,30);
     }
   });
 },{threshold:0.6});
@@ -79,9 +73,8 @@ function yesValentine(){
 
 function sendMessage(){
   const msg=document.getElementById("herMessage").value;
-  const status=document.getElementById("messageStatus");
-
-  emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{message:msg})
-  .then(()=>status.innerText="Your words reached me ❤️")
-  .catch(()=>status.innerText="Something went wrong.");
+  emailjs.send("service_23sbdh9","template_luj8x7p",{message:msg})
+  .then(()=>{
+    document.getElementById("endingScene").style.opacity=1;
+  });
 }
