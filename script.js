@@ -1,37 +1,25 @@
-// ===== EMAILJS INIT =====
 (function(){
-  emailjs.init("CbUgdHOASOFSvE1O7");
+  emailjs.init("YOUR_PUBLIC_KEY");
 })();
 
-// ===== Reveal animation =====
-const sections=document.querySelectorAll("section");
-window.addEventListener("scroll",()=>{
-  sections.forEach(sec=>{
-    if(sec.getBoundingClientRect().top<window.innerHeight-100){
-      sec.classList.add("show");
-    }
-  });
-});
-
-// ===== Auto music fade-in =====
+const music=document.getElementById("bgMusic");
 let started=false;
-document.addEventListener("click",()=>{
+
+document.getElementById("beginBtn").addEventListener("click",()=>{
   if(!started){
-    const music=document.getElementById("bgMusic");
     music.volume=0;
     music.play();
     let vol=0;
     const fade=setInterval(()=>{
-      if(vol<1){vol+=0.05;music.volume=vol;}
+      if(vol<0.4){vol+=0.02;music.volume=vol;}
       else clearInterval(fade);
     },200);
     started=true;
   }
+  document.querySelector(".opening").style.display="none";
 });
 
-// ===== Typewriter =====
-function typeWriter(id,text,speed=35){
-  const el=document.getElementById(id);
+function typeWriter(el,text,speed=35){
   let i=0;
   const timer=setInterval(()=>{
     const char=text[i];
@@ -43,10 +31,15 @@ function typeWriter(id,text,speed=35){
 }
 
 window.onload=()=>{
-  typeWriter("typeIntro",
-  "I know I can’t be with you this Valentine’s Day…\nso I made something just for you. ❤️");
+  typeWriter(document.getElementById("introText"),
+  "I couldn’t be there today…\nSo I made something instead. ❤️");
+};
 
-  typeWriter("typeLetter",
+const letterObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      music.volume=0.75;
+      typeWriter(document.getElementById("typeLetter"),
 `துன்புற்று நானும் துவண்டு போய் நிற்க, உன் பூவிழி வந்து புயல் போல் மோதும்!
 சிறு நொடி நானும் வெறுப்போடு உணர, உன் குயில் மொழி என்னுள் குடிகொண்டு ஆளும்!
 நீயின்றி நானும் நிலத்தினில் மீனே!
@@ -56,31 +49,18 @@ window.onload=()=>{
 துயர் பல வந்த போதும், துன்பம் பல கண்ட போதும், வற்றாத பொய்கையடி, நம் காதல், தாகம் தீர்க்கும் வைகையடி!
 இந்த தூரம் வைக்குமா வற்ற? நம் காதல் நதியை!
 உன் காதல் ஒன்றே ஆளும், இந்த மடையன் மதியை!
-இனிய காதலர் தின வாழ்த்துக்கள்!
+இனிய காதலர் தின வாழ்த்துக்கள்! என் காதல் நதியே! பூவிழும் கொடியே!
+புன்னகை முகிலே! தேன்சுரக்கனியே! தேவதை உருவே! தீரா காமமே! திகட்டாத மோகமே!
+என் அன்பர்கினியாளுக்கு, என் அன்பான காதலர் தின வாழ்த்துகள்!
+
 -அன்புடன்,
-நேஹன் (எ) முத்து.`);
-};
-
-// ===== Send Message =====
-function sendMessage(){
-  const msg=document.getElementById("herMessage").value;
-  const status=document.getElementById("messageStatus");
-  if(msg.trim()===""){
-    status.innerText="Write something from your heart 💌";
-    return;
-  }
-
-  emailjs.send("service_23sbdh9","template_luj8x7p",{message:msg})
-  .then(()=>{
-    status.innerText="Your words reached Muthu ❤️";
-    document.getElementById("herMessage").value="";
-    for(let i=0;i<20;i++)createHeart();
-  },()=>{
-    status.innerText="Something went wrong.";
+நேஹன் (எ) முத்து.`,30);
+    }
   });
-}
+},{threshold:0.6});
 
-// ===== Sliding NO button =====
+letterObserver.observe(document.querySelector(".letter"));
+
 let posIndex=0;
 const positions=[{x:10,y:20},{x:60,y:30},{x:30,y:60},{x:70,y:40}];
 
@@ -92,29 +72,16 @@ function moveNo(btn){
   posIndex++;
 }
 
-// ===== Hearts =====
 function yesValentine(){
   document.getElementById("valentineResult").innerHTML=
   "Forever sounds right with you ❤️";
-  for(let i=0;i<25;i++)createHeart();
 }
 
-function createHeart(){
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerText="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-}
+function sendMessage(){
+  const msg=document.getElementById("herMessage").value;
+  const status=document.getElementById("messageStatus");
 
-// ===== Photo modal =====
-document.querySelectorAll(".gallery img").forEach(img=>{
-  img.addEventListener("click",()=>{
-    const modal=document.createElement("div");
-    modal.className="modal";
-    modal.innerHTML=`<img src="${img.src}">`;
-    document.body.appendChild(modal);
-    modal.addEventListener("click",()=>modal.remove());
-  });
-});
+  emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{message:msg})
+  .then(()=>status.innerText="Your words reached me ❤️")
+  .catch(()=>status.innerText="Something went wrong.");
+}

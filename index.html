@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Neha ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
@@ -14,46 +15,69 @@
 <body>
 
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<div class="music-btn">🎵</div>
+<!-- PARTICLES -->
+<div class="particles"></div>
 
-<section class="intro show">
-  <h1>Hi, Neha! ❤️</h1>
-  <p id="typeIntro"></p>
-</section>
-
-<section class="memories">
-  <h2>Our Memories 📸</h2>
-  <div class="gallery">
-    <img src="photo1.jpeg">
-    <img src="photo2.jpeg">
-    <img src="photo3.jpeg">
-    <img src="photo4.jpeg">
-    <img src="photo5.jpeg">
+<!-- SCENE 1 -->
+<section class="scene opening">
+  <div class="center">
+    <h1 class="glow">Neha</h1>
+    <p>A story I built for you</p>
+    <button id="beginBtn">Tap to Begin</button>
   </div>
 </section>
 
-<section class="feelings">
-  <h2>Tell me what your heart feels… 💖</h2>
-  <textarea id="herMessage"
-    placeholder="Write anything… what you feel about us, about today, about me…"></textarea>
-  <button onclick="sendMessage()">Send to Muthu ❤️</button>
-  <p id="messageStatus"></p>
-</section>
-
-<section class="valentine">
-  <h2>Will you be my Valentine? 💝</h2>
-  <div class="btn-group">
-    <button class="yes" onclick="yesValentine()">YES ❤️</button>
-    <button class="no" onmouseover="moveNo(this)" ontouchstart="moveNo(this)">NO 🙈</button>
+<!-- SCENE 2 -->
+<section class="scene intro">
+  <div class="center">
+    <p id="introText"></p>
   </div>
-  <p id="valentineResult"></p>
 </section>
 
-<section class="letter">
-  <p id="typeLetter"></p>
+<!-- SCENE 3 - FILM REEL -->
+<section class="scene reelScene">
+  <div class="reel-wrapper">
+    <div class="reel" id="reel">
+      <div class="frame"><img src="photo1.jpeg"></div>
+      <div class="frame"><img src="photo2.jpeg"></div>
+      <div class="frame"><img src="photo3.jpeg"></div>
+      <div class="frame"><img src="photo4.jpeg"></div>
+      <div class="frame"><img src="photo5.jpeg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENE 4 -->
+<section class="scene valentine">
+  <div class="center">
+    <h2>Will you be my Valentine?</h2>
+    <div class="btn-group">
+      <button class="yes" onclick="yesValentine()">YES</button>
+      <button class="no" onmouseover="moveNo(this)" ontouchstart="moveNo(this)">NO</button>
+    </div>
+    <p id="valentineResult"></p>
+  </div>
+</section>
+
+<!-- SCENE 5 -->
+<section class="scene letter">
+  <div class="letter-box">
+    <p id="typeLetter"></p>
+  </div>
+</section>
+
+<!-- SCENE 6 -->
+<section class="scene feelings">
+  <div class="center">
+    <h2>Tell me what your heart felt…</h2>
+    <textarea id="herMessage"></textarea>
+    <button onclick="sendMessage()">Send ❤️</button>
+    <p id="messageStatus"></p>
+    <h3 class="ending">Until our next chapter…</h3>
+  </div>
 </section>
 
 <script src="script.js"></script>

@@ -1,146 +1,109 @@
-body{
-  margin:0;
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{
+  height:100%;
+  overflow:hidden;
   font-family:'Noto Serif Tamil',serif;
-  background:linear-gradient(-45deg,#ffe6f0,#fff0f6,#ffeaf4,#ffffff);
-  background-size:400% 400%;
-  animation:gradientMove 18s ease infinite;
-  color:#3a001f;
-  overflow-x:hidden;
-}
-
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-section{
-  width:92%;
-  max-width:600px;
-  margin:70px auto;
-  padding:45px 28px;
-  border-radius:32px;
-  background:rgba(255,255,255,0.75);
-  backdrop-filter:blur(15px);
-  position:relative;
-  opacity:0;
-  transform:translateY(40px);
-  transition:all 1s ease;
-}
-
-section.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-section::before{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:34px;
-  background:linear-gradient(45deg,#ff4081,#ff80ab,#e91e63);
-  background-size:300% 300%;
-  animation:borderGlow 6s linear infinite;
-  z-index:-1;
-}
-
-@keyframes borderGlow{
-  0%{background-position:0% 50%;}
-  100%{background-position:300% 50%;}
-}
-
-.gallery{
-  display:flex;
-  gap:24px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-}
-
-.gallery img{
-  width:85%;
-  max-width:280px;
-  border-radius:28px;
-  cursor:pointer;
-  scroll-snap-align:center;
-  box-shadow:0 30px 60px rgba(0,0,0,0.2);
-  transition:transform .5s ease;
-}
-
-.gallery img:active{
-  transform:scale(1.08);
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-.modal img{
-  width:90%;
-  max-width:500px;
-  border-radius:20px;
-}
-
-textarea{
-  width:100%;
-  height:140px;
-  border-radius:20px;
-  border:none;
-  padding:15px;
-  font-size:16px;
-  resize:none;
-  background:#fff5f8;
-  margin-bottom:15px;
-}
-
-button{
-  padding:12px 22px;
-  border-radius:25px;
-  border:none;
-  cursor:pointer;
-}
-
-.yes{
-  background:linear-gradient(45deg,#ff4f81,#e91e63);
+  background:radial-gradient(circle at top,#0f1c3f,#050a1a 70%);
   color:white;
 }
 
+.scene{
+  height:100vh;
+  width:100vw;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  scroll-snap-align:start;
+}
+
+body{
+  scroll-snap-type:y mandatory;
+  overflow-y:scroll;
+}
+
+.center{text-align:center;width:90%;max-width:500px;}
+
+.glow{
+  font-size:3rem;
+  text-shadow:0 0 20px #4da3ff;
+}
+
+button{
+  padding:10px 20px;
+  border-radius:20px;
+  border:none;
+  margin-top:20px;
+}
+
+.yes{
+  background:linear-gradient(45deg,#4da3ff,#ffffff);
+  color:#0f1c3f;
+}
+
 .no{
-  background:#f8e8ee;
   position:absolute;
+  background:rgba(255,255,255,0.3);
+  color:white;
 }
 
 .btn-group{
   position:relative;
-  height:150px;
+  height:120px;
 }
 
-.music-btn{
+.reel-wrapper{
+  width:100%;
+  overflow:hidden;
+}
+
+.reel{
+  display:flex;
+  gap:30px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:40px;
+}
+
+.frame{
+  flex:0 0 80%;
+  max-width:280px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 0 30px rgba(77,163,255,0.5);
+}
+
+.frame img{
+  width:100%;
+  display:block;
+}
+
+.letter-box{
+  width:90%;
+  max-width:500px;
+  padding:30px;
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  backdrop-filter:blur(15px);
+}
+
+textarea{
+  width:100%;
+  height:120px;
+  border-radius:15px;
+  border:none;
+  padding:10px;
+}
+
+.ending{
+  margin-top:30px;
+  opacity:0.6;
+}
+
+.particles{
   position:fixed;
-  top:20px;
-  right:20px;
-  font-size:26px;
-  cursor:pointer;
-}
-
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:22px;
-  animation:floatUp 6s linear infinite;
-}
-
-@keyframes floatUp{
-  from{transform:translateY(0);opacity:1;}
-  to{transform:translateY(-110vh);opacity:0;}
-}
-
-.letter p{
-  line-height:2.2;
-  text-align:left;
+  inset:0;
+  background-image:radial-gradient(white 1px,transparent 1px);
+  background-size:40px 40px;
+  opacity:0.05;
+  z-index:-1;
 }
