@@ -6,7 +6,189 @@
 <title>For Neha 💗</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ---------- GLOBAL ---------- */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Playfair Display', serif;
+  background:linear-gradient(to bottom,#ffe6f0,#ffd6eb,#ffc2e0);
+  color:#c85a8c;
+  overflow-x:hidden;
+}
+
+/* ---------- INTRO SCREEN ---------- */
+
+.intro-screen{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:linear-gradient(to bottom,#ffe6f0,#ffd6eb,#ffc2e0);
+  padding:20px;
+  transition:opacity 0.8s ease;
+  z-index:999;
+}
+
+.intro-content{
+  max-width:350px;
+}
+
+.intro-content h1{
+  font-size:2rem;
+  margin-bottom:20px;
+}
+
+.intro-content p{
+  margin-bottom:30px;
+  line-height:1.6;
+  opacity:0;
+  transition:opacity 1.2s ease;
+}
+
+.intro-screen button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#ff9cc9;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s ease;
+}
+
+/* Button breathing glow */
+.button-glow{
+  animation:glowPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes glowPulse{
+  0%{box-shadow:0 0 0 rgba(255,156,201,0.4);}
+  50%{box-shadow:0 0 20px rgba(255,156,201,0.6);}
+  100%{box-shadow:0 0 0 rgba(255,156,201,0.4);}
+}
+
+.fade-out{
+  opacity:0;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+
+.container{
+  max-width:430px;
+  margin:0 auto;
+  padding:20px;
+  display:none;
+}
+
+section{
+  background:#fff6fa;
+  border-radius:24px;
+  padding:30px 20px;
+  margin:25px 0;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  text-align:center;
+  animation:fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(15px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+h2{
+  margin-bottom:15px;
+}
+
+/* ---------- PHOTO GRID ---------- */
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:15px;
+}
+
+.photo-grid img{
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  transition:0.3s ease;
+}
+
+/* slight rotation personality */
+.photo-grid img:nth-child(odd){
+  transform:rotate(-2deg);
+}
+
+.photo-grid img:nth-child(even){
+  transform:rotate(2deg);
+}
+
+.photo-grid img:hover{
+  transform:scale(1.05) rotate(0deg);
+}
+
+/* ---------- VALENTINE ---------- */
+
+button{
+  padding:10px 20px;
+  border:none;
+  border-radius:25px;
+  background:#ff9cc9;
+  color:white;
+  margin:10px;
+  font-weight:bold;
+  transition:0.3s ease;
+  cursor:pointer;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* ---------- TAMIL LETTER ---------- */
+
+.tamil{
+  font-family:'Noto Serif Tamil', serif;
+  line-height:1.8;
+  white-space:pre-line;
+}
+
+/* ---------- FEELINGS ---------- */
+
+textarea{
+  width:100%;
+  height:110px;
+  border-radius:15px;
+  border:1px solid #ffd0e5;
+  padding:10px;
+  font-family:'Noto Serif Tamil', serif;
+  margin-top:10px;
+}
+
+/* ---------- ENDING ---------- */
+
+.ending{
+  background:transparent;
+  box-shadow:none;
+  color:#a84372;
+}
+
+</style>
 
 </head>
 
@@ -16,24 +198,23 @@
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<!-- FULL SCREEN HERO -->
-<section class="hero-screen" id="heroScreen">
-  <div class="hero-content">
-    <h1>Hi Neha,</h1>
-    <p>
+<!-- INTRO FULL SCREEN -->
+<section id="introScreen" class="intro-screen">
+  <div class="intro-content">
+    <h1 id="typedName"></h1>
+    <p id="introText">
       I know I can’t be there for this Valentine’s Day…<br><br>
-      But I’m sending you a letter with love,<br>
-      for my love.
+      But I am sending a letter with love for my love!
     </p>
-    <button onclick="startExperience()">Begin 💗</button>
+    <button id="beginBtn" onclick="enterSite()">Begin 💗</button>
   </div>
 </section>
 
 <!-- MAIN CONTENT -->
-<div class="main-content" id="mainContent">
+<div id="mainContent" class="container">
 
   <!-- PHOTOS -->
-  <section class="photos">
+  <section>
     <h2>Our Moments</h2>
     <div class="photo-grid">
       <img src="photo1.jpeg">
@@ -45,17 +226,15 @@
   </section>
 
   <!-- VALENTINE -->
-  <section class="valentine">
+  <section>
     <h2>Will you be my Valentine?</h2>
-    <div class="buttons">
-      <button onclick="yesClicked()">Yes 💗</button>
-      <button onclick="yesClicked()">Of Course 🌸</button>
-    </div>
+    <button onclick="yesClicked()">Yes 💗</button>
+    <button onclick="yesClicked()">Of Course 🌸</button>
     <p id="response"></p>
   </section>
 
   <!-- TAMIL LETTER -->
-  <section class="letter">
+  <section>
     <h2>For You</h2>
     <p class="tamil">
 துன்புற்று நானும் துவண்டு போய் நிற்க, உன் பூவிழி வந்து புயல் போல் மோதும்!
@@ -71,27 +250,69 @@
     </p>
   </section>
 
+  <!-- FEELINGS -->
+  <section>
+    <h2>Tell me what you felt</h2>
+    <textarea placeholder="Write here..."></textarea>
+  </section>
+
+  <section class="ending">
+    <p>Until our next chapter…</p>
+  </section>
+
 </div>
 
 <script>
-function startExperience(){
+
+/* --- Typing Effect for "Hi Neha," --- */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const nameEl = document.getElementById("typedName");
+  const textEl = document.getElementById("introText");
+  const button = document.getElementById("beginBtn");
+
+  const text = "Hi Neha,";
+  let i = 0;
+
+  function typeName(){
+    if(i < text.length){
+      nameEl.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeName, 90);
+    } else {
+      textEl.style.opacity = "1";
+      button.classList.add("button-glow");
+    }
+  }
+
+  typeName();
+});
+
+/* --- Begin Transition --- */
+
+function enterSite(){
+
   document.getElementById("bgMusic").play();
 
-  const hero = document.getElementById("heroScreen");
+  const intro = document.getElementById("introScreen");
   const main = document.getElementById("mainContent");
 
-  hero.classList.add("fade-out");
+  intro.classList.add("fade-out");
 
   setTimeout(()=>{
-    hero.style.display="none";
-    main.classList.add("fade-in");
+    intro.style.display="none";
+    main.style.display="block";
   },800);
 }
+
+/* --- Valentine Response --- */
 
 function yesClicked(){
   document.getElementById("response").innerText =
   "You just made my day 💗";
 }
+
 </script>
 
 </body>
