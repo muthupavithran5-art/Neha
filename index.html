@@ -7,6 +7,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Noto+Serif+Tamil:wght@400;600&display=swap" rel="stylesheet">
 
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
 <style>
 
 /* ---------- GLOBAL ---------- */
@@ -30,7 +33,7 @@ body{
   position:relative;
 }
 
-/* Dreamy soft glow */
+/* Dreamy glow */
 body::before{
   content:"";
   position:fixed;
@@ -49,7 +52,7 @@ body::before{
   to{transform:translate(60px,80px);}
 }
 
-/* Sparkle dust */
+/* Sparkles */
 body::after{
   content:"";
   position:fixed;
@@ -108,7 +111,6 @@ body::after{
   transition:0.3s ease;
 }
 
-/* Button glow */
 .button-glow{
   animation:glowPulse 2.5s infinite ease-in-out;
 }
@@ -149,12 +151,6 @@ section{
   to{opacity:1; transform:translateY(0);}
 }
 
-h2{
-  margin-bottom:15px;
-}
-
-/* ---------- PHOTOS ---------- */
-
 .photo-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -169,19 +165,12 @@ h2{
   transition:0.3s ease;
 }
 
-.photo-grid img:nth-child(odd){
-  transform:rotate(-2deg);
-}
-
-.photo-grid img:nth-child(even){
-  transform:rotate(2deg);
-}
+.photo-grid img:nth-child(odd){ transform:rotate(-2deg); }
+.photo-grid img:nth-child(even){ transform:rotate(2deg); }
 
 .photo-grid img:hover{
   transform:scale(1.05) rotate(0deg);
 }
-
-/* ---------- BUTTONS ---------- */
 
 button{
   padding:10px 22px;
@@ -199,7 +188,6 @@ button:hover{
   transform:scale(1.05);
 }
 
-/* Floating Heart */
 .heart-pop{
   position:fixed;
   bottom:120px;
@@ -215,7 +203,6 @@ button:hover{
   100%{opacity:0; transform:translate(-50%,-80px);}
 }
 
-/* Shy Button */
 .shy-move{
   animation:shyShift 0.4s ease;
 }
@@ -226,16 +213,12 @@ button:hover{
   100%{transform:translateX(0);}
 }
 
-/* ---------- TAMIL ---------- */
-
 .tamil{
   font-family:'Noto Serif Tamil', serif;
   line-height:1.9;
   white-space:pre-line;
   font-size:1rem;
 }
-
-/* ---------- TEXTAREA ---------- */
 
 textarea{
   width:100%;
@@ -246,8 +229,6 @@ textarea{
   font-family:'Noto Serif Tamil', serif;
   margin-top:10px;
 }
-
-/* ---------- FADE END ---------- */
 
 .fade-overlay{
   position:fixed;
@@ -285,7 +266,6 @@ textarea{
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<!-- INTRO -->
 <section id="introScreen" class="intro-screen">
   <div class="intro-content">
     <h1 id="typedName"></h1>
@@ -297,7 +277,6 @@ textarea{
   </div>
 </section>
 
-<!-- MAIN -->
 <div id="mainContent" class="container">
 
   <section>
@@ -321,7 +300,7 @@ textarea{
   <section>
     <h2>For You</h2>
     <p class="tamil">
-துன்புற்று நானும் துவண்டு போய் நிற்க, உன் பூவிழி வந்து புயல் போல் மோதும்!
+(துன்புற்று நானும் துவண்டு போய் நிற்க, உன் பூவிழி வந்து புயல் போல் மோதும்!
 சிறு நொடி நானும் வெறுப்போடு உணர, உன் குயில் மொழி என்னுள் குடிகொண்டு ஆளும்!
 நீயின்றி நானும் நிலத்தினில் மீனே!
 நொய் கொண்டு வாழும் பாமரன் தானே!
@@ -333,11 +312,11 @@ textarea{
 இனிய காதலர் தின வாழ்த்துக்கள்! என் காதல் நதியே! பூவிழும் கொடியே! புன்னகை முகிலே! தேன்சுரக்கனியே! 
 தேவதை உருவே! தீரா காமமே! திகட்டாத மோகமே! என் அன்பிற்கினியாளுக்கு என் அன்பான காதலர் தின வாழ்த்துக்கள்!
 -அன்புடன்,
-நேஹன் (எ) முத்து.
+நேஹன் (எ) முத்து.)
     </p>
   </section>
 
-  <section id="feelSection">
+  <section>
     <h2>Tell me what you felt</h2>
     <textarea id="herMessage" placeholder="Write here..."></textarea>
     <br>
@@ -351,6 +330,11 @@ textarea{
 </div>
 
 <script>
+
+/* Initialize EmailJS */
+(function(){
+  emailjs.init("CbUgdHOASOFSvE1O7");
+})();
 
 /* Typing */
 document.addEventListener("DOMContentLoaded", function(){
@@ -372,7 +356,6 @@ document.addEventListener("DOMContentLoaded", function(){
   typeName();
 });
 
-/* Begin */
 function enterSite(){
   document.getElementById("bgMusic").play();
   const intro = document.getElementById("introScreen");
@@ -384,7 +367,6 @@ function enterSite(){
   },800);
 }
 
-/* Yes */
 function yesClicked(){
   document.getElementById("response").innerText =
   "You just made my day 💗";
@@ -395,28 +377,39 @@ function yesClicked(){
   setTimeout(()=>{ heart.remove(); },1500);
 }
 
-/* Shy */
 function shyClick(btn){
   btn.classList.add("shy-move");
   setTimeout(()=>{ btn.classList.remove("shy-move"); },400);
   yesClicked();
 }
 
-/* Send */
 function sendMessage(){
+
   const message = document.getElementById("herMessage").value;
   if(message.trim()==="") return;
-  const overlay = document.getElementById("fadeOverlay");
-  const music = document.getElementById("bgMusic");
-  let fadeAudio = setInterval(function(){
-    if(music.volume > 0.05){
-      music.volume -= 0.05;
-    } else {
-      music.volume = 0;
-      clearInterval(fadeAudio);
-    }
-  },150);
-  overlay.classList.add("show");
+
+  emailjs.send("service_23sbdh9","template_luj8x7p",{
+    message: message
+  })
+  .then(function(){
+
+      const overlay = document.getElementById("fadeOverlay");
+      const music = document.getElementById("bgMusic");
+
+      let fadeAudio = setInterval(function(){
+        if(music.volume > 0.05){
+          music.volume -= 0.05;
+        } else {
+          music.volume = 0;
+          clearInterval(fadeAudio);
+        }
+      },150);
+
+      overlay.classList.add("show");
+
+  }, function(){
+      alert("Something went wrong. Try again.");
+  });
 }
 
 </script>
